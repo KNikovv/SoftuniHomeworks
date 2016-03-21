@@ -1,10 +1,6 @@
-package com.company;
-
 import java.util.Scanner;
 
-/**
- * Created by kaloy on 2/28/2016.
- */
+
 public class Base7toDecimal {
     public static void main(String[] args) {
 

@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by kaloy on 2/28/2016.
- */
 public class OddOrEvenPairs {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

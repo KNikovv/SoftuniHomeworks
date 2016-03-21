@@ -2,9 +2,7 @@ package com.company;
 
 import java.util.*;
 
-/**
- * Created by kaloy on 2/28/2016.
- */
+
 public class RandomizeNums {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

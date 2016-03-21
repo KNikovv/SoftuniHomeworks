@@ -2,9 +2,6 @@ package com.company;
 
 import java.util.Scanner;
 
-/**
- * Created by kaloy on 2/28/2016.
- */
 public class HitTheTarget {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

@@ -1,12 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.StringJoiner;
-import java.util.jar.Pack200;
-import java.util.zip.CheckedInputStream;
 
-/**
- * Created by kaloy on 3/21/2016.
- */
 public class MagicExchangableWords {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

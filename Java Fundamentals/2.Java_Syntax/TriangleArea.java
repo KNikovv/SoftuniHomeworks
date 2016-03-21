@@ -2,9 +2,6 @@ package com.company;
 
 import java.util.Scanner;
 
-/**
- * Created by kaloy on 2/28/2016.
- */
 public class TriangleArea {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

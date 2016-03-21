@@ -2,9 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
-/**
- * Created by kaloy on 2/29/2016.
- */
+
 public class CharMultiplier {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
