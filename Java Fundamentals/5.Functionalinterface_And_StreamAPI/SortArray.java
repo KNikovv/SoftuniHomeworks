@@ -9,10 +9,6 @@ public class sortArray {
         Scanner scan = new Scanner(System.in);
         String[] input = scan.nextLine().split("\\W+");
         String order = scan.nextLine();
-        int[] intarray = new int[input.length];
-        for (int i = 0; i < intarray.length; i++) {
-            intarray[i] = Integer.parseInt(input[i]);
-        }
         if (order.equals("Ascending")){
             Arrays.stream(input)
                     .sorted((e1, e2) -> Integer.compare(Integer.parseInt(e1), Integer.parseInt(e2)))
