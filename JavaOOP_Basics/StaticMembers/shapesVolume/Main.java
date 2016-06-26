@@ -11,23 +11,29 @@ public class Main {
         String line;
         while (!(line = bf.readLine()).equals("End")) {
             String[] input = line.split("\\s+");
+            double height;
+            double result = 0.0;
             switch (input.length) {
                 case 2:
                     double side = Double.parseDouble(input[1]);
-                    System.out.printf("%.3f\n", VolumeCalculator.calcCubeVolume(side));
+                    Cube cube = new Cube(side);
+                    result = VolumeCalculator.calcCubeVolume(cube);
                     break;
                 case 3:
                     double radius = Double.parseDouble(input[1]);
-                    double height = Double.parseDouble(input[2]);
-                    System.out.printf("%.3f\n", VolumeCalculator.calcCylinderVolume(radius, height));
+                     height = Double.parseDouble(input[2]);
+                    Cylinder cylinder = new Cylinder(radius,height);
+                    result = VolumeCalculator.calcCylinderVolume(cylinder);
                     break;
                 case 4:
                     double baseSide = Double.parseDouble(input[1]);
-                    double heightt = Double.parseDouble(input[2]);
+                    height = Double.parseDouble(input[2]);
                     double length = Double.parseDouble(input[3]);
-                    System.out.printf("%.3f\n", VolumeCalculator.calcTriangPrismVolume(baseSide, heightt, length));
+                    TriangularPrism triangularPrism = new TriangularPrism(baseSide,height,length);
+                    result = VolumeCalculator.calcTriangPrismVolume(triangularPrism);
                     break;
             }
+            System.out.printf("%.3f\n",result);
         }
     }
 }
