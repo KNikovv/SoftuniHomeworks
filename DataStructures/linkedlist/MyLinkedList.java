@@ -2,12 +2,12 @@ package lineardatastructures.linkedlist;
 
 public class MyLinkedList<E> {
 
-    private Node start;
-    private Node end;
+    private Node first;
+    private Node last;
     private int count;
 
     public MyLinkedList() {
-        this.start = null;
+        this.first = null;
     }
 
     public int size() {
@@ -18,33 +18,35 @@ public class MyLinkedList<E> {
         Node node = new Node(obj, null);
 
         if (count == 0) {
-            this.start = node;
-            this.end = node;
+            this.first = node;
+            this.last = node;
         } else {
-            this.end.next = node;
-            this.end = node;
+            this.last.next = node;
+            this.last = node;
         }
         this.count++;
     }
 
     public void remove(int index) {
         int tempIndex = 0;
-        Node tempNode = this.start;
+        Node tempNode = this.first;
         if (index > this.count - 1 || index < 0) {
             throw new IndexOutOfBoundsException("Index not valid");
         }
-        if (index == 0) { // if the index is 0 replace the current start/head with the nextone
-            if (this.count == 1) { // if the count of elements is 1 make the start/head null
-                this.start = null;
-                this.end = null;
+        if (index == 0) { // if the index is 0 replace the current first/head with the nextone
+            if (this.count == 1) { // if the count of elements is 1 make the first/head null
+                this.first = null;
+                this.last = null;
                 this.count--;
                 return;
             }
-            this.start = this.start.next;
+            this.first = this.first.next;
             this.count--;
             return;
         }
         while (tempNode != null) {
+            //while there is element check the index before the Wanted and
+            // make the element point to the element after the one to be removed
             if (index - 1 == tempIndex) {
                 tempNode.next.data = tempNode.data;
                 tempNode.next = tempNode.next.next;
@@ -57,7 +59,7 @@ public class MyLinkedList<E> {
     }
 
     public int firstIndexOf(Object obj) {
-        Node tempNode = this.start;
+        Node tempNode = this.first;
         int index = -1;
         int tempIndex = 0;
         while (tempNode != null) {
@@ -71,7 +73,7 @@ public class MyLinkedList<E> {
     }
 
     public int lastIndexOf(Object obj) {
-        Node tempNode = this.start;
+        Node tempNode = this.first;
         int index = -1;
         int tempIndex = 0;
 
@@ -86,7 +88,7 @@ public class MyLinkedList<E> {
     }
 
     public void print() {
-        Node temp = this.start;
+        Node temp = this.first;
         if (this.count > 0) {
             System.out.print("[");
             while (true) {
