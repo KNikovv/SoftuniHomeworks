@@ -51,7 +51,7 @@ public class CommandDispatcher {
     }
 
     private void makeSpy(String[] args) {
-        ISpy spy = new Spy(args[1], args[2], args[3], args[4]);
+        ISpy spy = new Spy(args[1], args[2], args[3], Integer.valueOf(args[4]));
         System.out.print(spy);
     }
 
