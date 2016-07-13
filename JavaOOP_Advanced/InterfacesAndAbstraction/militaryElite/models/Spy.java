@@ -18,6 +18,6 @@ public class Spy extends Soldier implements ISpy {
 
     @Override
     public String toString() {
-        return super.toString() + String.format("Code Number: %s\n",this.getCodeNumber());
+        return super.toString() + String.format("\nCode Number: %s\n",this.getCodeNumber());
     }
 }
