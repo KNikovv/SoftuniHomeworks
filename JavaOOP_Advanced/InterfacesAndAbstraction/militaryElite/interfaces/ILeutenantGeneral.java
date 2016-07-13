@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ILeutenantGeneral {
 
-    List<ISoldier> getPrivates();
+    List<IPrivate> getPrivates();
 
-    void addPrivates(String id , List<ISoldier> allPrivates);
+    void addPrivates(String id , List<IPrivate> allPrivates);
 }

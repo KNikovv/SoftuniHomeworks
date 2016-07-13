@@ -1,6 +1,6 @@
 package militaryElite.interfaces;
 
 
-public interface IPrivate {
+public interface IPrivate extends ISoldier {
     double getSalary();
 }

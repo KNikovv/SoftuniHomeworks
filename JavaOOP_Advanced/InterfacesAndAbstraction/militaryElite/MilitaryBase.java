@@ -1,22 +1,22 @@
 package militaryElite;
 
-import militaryElite.interfaces.ISoldier;
+import militaryElite.interfaces.IPrivate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MilitaryBase {
 
-    private List<ISoldier> allPrivates;
+    private List<IPrivate> allPrivates;
 
     public MilitaryBase() {
         this.allPrivates = new ArrayList<>();
     }
 
-    public void addPrivate(ISoldier privateSoldier) {
+    public void addPrivate(IPrivate privateSoldier) {
         this.allPrivates.add(privateSoldier);
     }
-    public List<ISoldier> getAllPrivates(){
+    public List<IPrivate> getAllPrivates(){
         return this.allPrivates;
     }
 }

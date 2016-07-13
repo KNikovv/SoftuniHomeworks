@@ -90,7 +90,7 @@ public class CommandDispatcher {
     }
 
     private void makePrivateSoldier(String[] args) {
-        ISoldier soldier = new Private(args[1], args[2], args[3], Double.valueOf(args[4]));
+        IPrivate soldier = new Private(args[1], args[2], args[3], Double.valueOf(args[4]));
         System.out.print(soldier);
         this.militaryBase.addPrivate(soldier);
     }
