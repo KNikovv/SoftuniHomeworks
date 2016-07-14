@@ -14,8 +14,8 @@ public class DemonImpl<Double> extends Character implements Demon {
         return (Double) this.specialPoints;
     }
 
-    @Override
-    public void setPoints() {
+
+    private void setPoints() {
         this.specialPoints = this.getLevel() * this.specialPoints.doubleValue();
     }
 

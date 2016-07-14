@@ -14,8 +14,8 @@ public class ArchangelImpl<Integer> extends Character implements Archangel {
         return (Integer) this.specialPoints;
     }
 
-    @Override
-    public void setPoints() {
+
+    private void setPoints() {
         this.specialPoints = this.getLevel() * this.specialPoints.intValue();
     }
 

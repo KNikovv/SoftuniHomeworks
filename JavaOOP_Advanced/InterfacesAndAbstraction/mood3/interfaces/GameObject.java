@@ -6,8 +6,6 @@ public interface GameObject<E> {
 
     int getLevel();
 
-    void setPoints();
-
     E getHashedPassword();
 
     void setHashedPassword(E element);
