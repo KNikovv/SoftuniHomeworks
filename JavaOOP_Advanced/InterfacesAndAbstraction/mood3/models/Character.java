@@ -2,7 +2,7 @@ package mood3.models;
 
 import mood3.interfaces.GameObject;
 
-public abstract class Character<E> implements GameObject<E> {
+public abstract class Character<E,P extends Number> implements GameObject<E> {
     private static final int SUBSTRING_IMPL = 4;
     private String userName;
 
@@ -10,9 +10,9 @@ public abstract class Character<E> implements GameObject<E> {
 
     private E hashedPassword;
 
-    protected Number specialPoints;
+    protected P specialPoints;
 
-    public Character(String userName, int level, Number specialPoints) {
+    public Character(String userName, int level, P specialPoints) {
         this.setUserName(userName);
         this.setLevel(level);
         this.setSpecialPoints(specialPoints);
@@ -46,7 +46,7 @@ public abstract class Character<E> implements GameObject<E> {
         this.level = level;
     }
 
-    private void setSpecialPoints(Number specialPoints) {
+    private void setSpecialPoints(P specialPoints) {
         this.specialPoints = specialPoints;
     }
 
