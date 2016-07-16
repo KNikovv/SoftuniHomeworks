@@ -2,7 +2,7 @@ package mood3.models;
 
 import mood3.interfaces.Archangel;
 
-public class ArchangelImpl extends Character<String,Integer> implements Archangel {
+public class ArchangelImpl extends Character<Integer, Integer> implements Archangel {
 
     public ArchangelImpl(String userName, int level, Integer specialPoints) {
         super(userName, level, specialPoints);
@@ -11,7 +11,7 @@ public class ArchangelImpl extends Character<String,Integer> implements Archange
 
     @Override
     public Integer getMana() {
-        return (Integer) this.specialPoints;
+        return this.specialPoints;
     }
 
 

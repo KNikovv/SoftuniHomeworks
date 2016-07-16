@@ -2,7 +2,7 @@ package mood3.models;
 
 import mood3.interfaces.Demon;
 
-public class DemonImpl extends Character<String,Double> implements Demon {
+public class DemonImpl extends Character<Double, Double> implements Demon {
 
     public DemonImpl(String userName, int level, Double specialPoints) {
         super(userName, level, specialPoints);
@@ -11,7 +11,7 @@ public class DemonImpl extends Character<String,Double> implements Demon {
 
     @Override
     public Double getEnergy() {
-        return (Double) this.specialPoints;
+        return this.specialPoints;
     }
 
 
