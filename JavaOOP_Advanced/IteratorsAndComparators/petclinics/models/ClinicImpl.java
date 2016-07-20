@@ -109,10 +109,10 @@ public class ClinicImpl implements Clinic {
     @Override
     public String getSpecificRoomInfo(int roomIndex) {
         String roomState;
-        if(this.getRooms()[roomIndex-1]==null){
+        if (this.getRooms()[roomIndex - 1] == null) {
             roomState = "Room empty";
-        }else{
-            roomState = this.getRooms()[roomIndex-1].toString();
+        } else {
+            roomState = this.getRooms()[roomIndex - 1].toString();
         }
 
         return roomState;
@@ -121,12 +121,9 @@ public class ClinicImpl implements Clinic {
     @Override
     public String getAllRoomsInfo() {
         StringBuilder builder = new StringBuilder();
-        for (Pet pet : this.getRooms()) {
-            if (pet != null) {
-                builder.append(pet).append(System.lineSeparator());
-                continue;
-            }
-            builder.append("Room empty").append(System.lineSeparator());
+        for (int currentRoom = 1; currentRoom <= this.rooms.length; currentRoom++) { // <= because room 1 corresponds to 0 index
+            builder.append(getSpecificRoomInfo(currentRoom));
+            builder.append(System.lineSeparator());
         }
         return builder.toString();
     }
@@ -137,15 +134,15 @@ public class ClinicImpl implements Clinic {
     }
 
     private void changeIndex() {
+        // left room add
         if (this.canAddToLeftRoom) {
             this.canAddToLeftRoom = false;
-            this.leftIndex--;
-            this.roomIndex = this.leftIndex;
+            this.roomIndex = --leftIndex;
             return;
         }
+        // right room add
         this.canAddToLeftRoom = true;
-        this.rightIndex++;
-        this.roomIndex = rightIndex;
+        this.roomIndex = ++rightIndex;
     }
 
 }
