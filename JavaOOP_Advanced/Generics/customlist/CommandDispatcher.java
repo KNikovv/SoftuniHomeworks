@@ -51,7 +51,7 @@ public class CommandDispatcher<T extends Comparable> {
                 this.customList.print();
                 break;
             case "Sort":
-                this.sorter.sort();
+                this.sorter.sort(this.customList);
                 break;
             case "END":
                 this.isEndDispatched = true;

@@ -3,10 +3,9 @@ package customlist.models;
 import customlist.interfaces.CustomList;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class CustomListImpl<T extends Comparable> implements CustomList<T>,Iterable {
+public class CustomListImpl<T extends Comparable<T>> implements CustomList<T> {
 
     private List<T> data;
 
@@ -42,7 +41,7 @@ public class CustomListImpl<T extends Comparable> implements CustomList<T>,Itera
     public int countGreaterThan(T element) {
         int count = 0;
 
-        for (T tElement : data) {
+        for (T tElement : this.data) {
             if (tElement.compareTo(element) > 0) {
                 count++;
             }
@@ -74,18 +73,19 @@ public class CustomListImpl<T extends Comparable> implements CustomList<T>,Itera
     }
 
     @Override
-    public void print() {
-        for(T element : this.data){
-            System.out.println(element);
-        }
-    }
-
-    public List<T> getData() {
-        return this.data;
+    public T get(int index) {
+        return this.data.get(index);
     }
 
     @Override
-    public Iterator iterator() {
-        return this.getData().iterator();
+    public int getSize() {
+        return this.data.size();
+    }
+
+    @Override
+    public void print() {
+        for (T element : this.data) {
+            System.out.println(element);
+        }
     }
 }

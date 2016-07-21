@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
         CustomListImpl<String> customStringList = new CustomListImpl<>();
-        Sortable<String> customSorter = new Sorter<>(customStringList);
+        Sortable<String> customSorter = new Sorter<>();
         CommandDispatcher commandDispatcher = new CommandDispatcher(customStringList,customSorter);
 
         while (!commandDispatcher.isEndDispatched()) {
