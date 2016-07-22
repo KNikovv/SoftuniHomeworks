@@ -4,6 +4,6 @@ import infernoinfinity.enums.WeaponType;
 
 public interface WeaponFactory {
 
-    Weapon createWeapon(String weaponName,WeaponType weaponType);
+    Weapon forgeWeapon(String weaponName, WeaponType weaponType);
 
 }

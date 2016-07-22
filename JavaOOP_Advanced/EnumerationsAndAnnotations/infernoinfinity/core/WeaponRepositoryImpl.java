@@ -29,7 +29,7 @@ public class WeaponRepositoryImpl implements WeaponRepository {
 
     @Override
     public void createWeapon(WeaponType weaponType, String weaponName) {
-        Weapon newWeapon = this.weaponFactory.createWeapon(weaponName, weaponType);
+        Weapon newWeapon = this.weaponFactory.forgeWeapon(weaponName, weaponType);
         this.weapons.put(weaponName, newWeapon);
     }
 
