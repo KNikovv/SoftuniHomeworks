@@ -6,5 +6,4 @@ public interface Engine {
 
     void run() throws IOException;
 
-    String[] splitInput(String input) throws IOException;
 }

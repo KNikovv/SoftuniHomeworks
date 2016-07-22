@@ -24,15 +24,11 @@ public class EngineImpl implements Engine {
             if (input.toLowerCase().equals("end")) {
                 break;
             }
-            String[] params = this.splitInput(input);
+            String[] params = input.split(";");
             String command = params[0];
 
             this.commandInterpreter.dispatch(command, params);
         }
     }
 
-    @Override
-    public String[] splitInput(String input) throws IOException {
-        return input.split(";");
-    }
 }
