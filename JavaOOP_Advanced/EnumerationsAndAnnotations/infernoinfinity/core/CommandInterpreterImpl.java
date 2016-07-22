@@ -16,7 +16,6 @@ public class CommandInterpreterImpl implements CommandInterpreter {
     public CommandInterpreterImpl() {
         this.weaponRepository = new WeaponRepositoryImpl();
         this.commands = new HashMap<>();
-        this.seedCommands();
     }
 
     @Override

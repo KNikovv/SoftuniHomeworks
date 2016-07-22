@@ -13,8 +13,9 @@ public class EngineImpl implements Engine {
     private Reader reader;
 
     public EngineImpl(CommandInterpreter commandInterpreter) {
-        this.commandInterpreter = commandInterpreter;
         this.reader = new ConsoleReader();
+        this.commandInterpreter = commandInterpreter;
+        this.commandInterpreter.seedCommands();
     }
 
     @Override

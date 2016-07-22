@@ -62,12 +62,6 @@ public class WeaponRepositoryImpl implements WeaponRepository {
         this.writer.writeLine(weaponToPrint.toString());
     }
 
-    private void printGreaterWeapon(Weapon weapon) {
-        this.writer.writeLine(String.format("%s (Item Level: %.1f)",
-                weapon.toString(),
-                weapon.getItemLevel()));
-    }
-
     public void printAnnotation(String annotationType) {
         CustomInfo annotation = getAnnotationToPrint();
 
@@ -87,6 +81,12 @@ public class WeaponRepositoryImpl implements WeaponRepository {
             default:
                 throw new NoSuchElementException();
         }
+    }
+
+    private void printGreaterWeapon(Weapon weapon) {
+        this.writer.writeLine(String.format("%s (Item Level: %.1f)",
+                weapon.toString(),
+                weapon.getItemLevel()));
     }
 
     private void printReviewersAnnotation(String annotationType, CustomInfo annotation) {
