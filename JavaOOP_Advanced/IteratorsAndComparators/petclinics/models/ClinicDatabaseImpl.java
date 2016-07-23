@@ -17,15 +17,14 @@ public class ClinicDatabaseImpl implements ClinicDatabase {
         this.allPets = new TreeMap<>();
     }
 
-
     @Override
     public Map<String, Clinic> getAllClinics() {
-        return this.allClinics;
+        return Collections.unmodifiableMap(this.allClinics);
     }
 
     @Override
     public Map<String, Pet> getAllPets() {
-        return this.allPets;
+        return Collections.unmodifiableMap(this.allPets);
     }
 
     @Override
