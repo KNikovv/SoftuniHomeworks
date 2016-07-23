@@ -4,7 +4,6 @@ import infernoinfinity.annotations.CustomInfo;
 import infernoinfinity.enums.Gem;
 import infernoinfinity.enums.WeaponType;
 import infernoinfinity.interfaces.Weapon;
-import infernoinfinity.interfaces.WeaponFactory;
 import infernoinfinity.interfaces.WeaponRepository;
 import infernoinfinity.interfaces.Writer;
 import infernoinfinity.io.ConsoleWriter;
@@ -19,17 +18,15 @@ public class WeaponRepositoryImpl implements WeaponRepository {
 
     private Map<String, Weapon> weapons;
     private Writer writer;
-    private WeaponFactory weaponFactory;
 
     public WeaponRepositoryImpl() {
         this.weapons = new HashMap<>();
-        this.weaponFactory = new WeaponFactoryImpl();
         this.writer = new ConsoleWriter();
     }
 
     @Override
     public void createWeapon(WeaponType weaponType, String weaponName) {
-        Weapon newWeapon = this.weaponFactory.forgeWeapon(weaponName, weaponType);
+        Weapon newWeapon = new WeaponImpl(weaponName,weaponType);
         this.weapons.put(weaponName, newWeapon);
     }
 
