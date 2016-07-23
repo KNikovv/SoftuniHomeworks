@@ -9,9 +9,9 @@ public class PrintAnnotationCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... params) {
+    public String execute(String... params) {
         String annotationType = params[0];
 
-        this.getWeaponRepository().printAnnotation(annotationType);
+        return this.getWeaponRepository().getAnnotationAsString(annotationType);
     }
 }

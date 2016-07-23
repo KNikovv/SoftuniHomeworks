@@ -9,10 +9,11 @@ public class CompareCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... params) {
+    public String execute(String... params) {
         String firstWeaponName = params[1];
         String secondWeaponName = params[2];
 
-        this.getWeaponRepository().compareWeapons(firstWeaponName,secondWeaponName);
+        return this.getWeaponRepository().compareWeapons(firstWeaponName, secondWeaponName);
+
     }
 }

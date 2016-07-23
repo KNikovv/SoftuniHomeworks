@@ -10,10 +10,11 @@ public class CreateWeaponCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... params) {
+    public String execute(String... params) {
         WeaponType weaponType = Enum.valueOf(WeaponType.class, params[1]);
         String weaponName = params[2];
 
         this.getWeaponRepository().createWeapon(weaponType, weaponName);
+        return null;
     }
 }

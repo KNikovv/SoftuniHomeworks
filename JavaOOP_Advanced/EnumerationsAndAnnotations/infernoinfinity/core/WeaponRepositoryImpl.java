@@ -5,8 +5,6 @@ import infernoinfinity.enums.Gem;
 import infernoinfinity.enums.WeaponType;
 import infernoinfinity.interfaces.Weapon;
 import infernoinfinity.interfaces.WeaponRepository;
-import infernoinfinity.interfaces.Writer;
-import infernoinfinity.io.ConsoleWriter;
 import infernoinfinity.models.WeaponImpl;
 
 import java.util.Arrays;
@@ -17,16 +15,14 @@ import java.util.NoSuchElementException;
 public class WeaponRepositoryImpl implements WeaponRepository {
 
     private Map<String, Weapon> weapons;
-    private Writer writer;
 
     public WeaponRepositoryImpl() {
         this.weapons = new HashMap<>();
-        this.writer = new ConsoleWriter();
     }
 
     @Override
     public void createWeapon(WeaponType weaponType, String weaponName) {
-        Weapon newWeapon = new WeaponImpl(weaponName,weaponType);
+        Weapon newWeapon = new WeaponImpl(weaponName, weaponType);
         this.weapons.put(weaponName, newWeapon);
     }
 
@@ -41,68 +37,64 @@ public class WeaponRepositoryImpl implements WeaponRepository {
     }
 
     @Override
-    public void compareWeapons(String firstWeaponName, String secondWeaponName) {
+    public String compareWeapons(String firstWeaponName, String secondWeaponName) {
         Weapon firstWeapon = this.weapons.get(firstWeaponName);
         Weapon secondWeapon = this.weapons.get(secondWeaponName);
 
-        if (firstWeapon.compareTo(secondWeapon) >= 0) {
-            this.printGreaterWeapon(firstWeapon);
-            return;
-        }
+        String greaterWeapon = firstWeapon.compareTo(secondWeapon) >= 0 ?
+                this.getGreaterWeapon(firstWeapon) :
+                this.getGreaterWeapon(secondWeapon);
 
-        this.printGreaterWeapon(secondWeapon);
+        return greaterWeapon;
     }
 
     @Override
-    public void print(String weaponName) {
-        Weapon weaponToPrint = this.weapons.get(weaponName);
-        this.writer.writeLine(weaponToPrint.toString());
+    public String getWeaponToPrint(String weaponName) {
+        String weaponAsString = this.weapons.get(weaponName).toString();
+        return weaponAsString;
     }
 
-    public void printAnnotation(String annotationType) {
+    @Override
+    public String getAnnotationAsString(String annotationType) {
         CustomInfo annotation = getAnnotationToPrint();
 
         switch (annotationType) {
             case "Author":
-                printAuthorAnnotation(annotationType, annotation);
-                break;
+                return this.getAuthor(annotationType, annotation);
             case "Revision":
-                printRevisionAnnotation(annotationType, annotation);
-                break;
+                return this.getRevision(annotationType, annotation);
             case "Description":
-                printDescriptionAnnotation(annotationType, annotation);
-                break;
+                return this.getDescription(annotationType, annotation);
             case "Reviewers":
-                printReviewersAnnotation(annotationType, annotation);
-                break;
+                return this.getReviewers(annotationType, annotation);
             default:
                 throw new NoSuchElementException();
         }
     }
 
-    private void printGreaterWeapon(Weapon weapon) {
-        this.writer.writeLine(String.format("%s (Item Level: %.1f)",
+    private String getGreaterWeapon(Weapon weapon) {
+        return (String.format("%s (Item Level: %.1f)",
                 weapon.toString(),
                 weapon.getItemLevel()));
     }
 
-    private void printReviewersAnnotation(String annotationType, CustomInfo annotation) {
+    private String getReviewers(String annotationType, CustomInfo annotation) {
         String reviewers = Arrays.toString(annotation.reviewers()).replaceAll("[\\[\\]]", "");
-        this.writer.writeLine(String.format("%s: %s", annotationType, reviewers));
+        return (String.format("%s: %s", annotationType, reviewers));
     }
 
-    private void printDescriptionAnnotation(String annotationType, CustomInfo annotation) {
-        this.writer.writeLine(String.format("Class %s: %s",
+    private String getDescription(String annotationType, CustomInfo annotation) {
+        return (String.format("Class %s: %s",
                 annotationType.toLowerCase(),
                 annotation.description()));
     }
 
-    private void printRevisionAnnotation(String annotationType, CustomInfo annotation) {
-        this.writer.writeLine(String.format("%s: %s", annotationType, annotation.revision()));
+    private String getRevision(String annotationType, CustomInfo annotation) {
+        return (String.format("%s: %s", annotationType, annotation.revision()));
     }
 
-    private void printAuthorAnnotation(String annotationType, CustomInfo annotation) {
-        this.writer.writeLine(String.format("%s: %s", annotationType, annotation.author()));
+    private String getAuthor(String annotationType, CustomInfo annotation) {
+        return (String.format("%s: %s", annotationType, annotation.author()));
     }
 
     private CustomInfo getAnnotationToPrint() {

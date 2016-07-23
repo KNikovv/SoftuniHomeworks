@@ -9,9 +9,10 @@ public class RemoveGemCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... params) {
+    public String execute(String... params) {
         String weaponName = params[1];
         int socketIndex = Integer.valueOf(params[2]);
         this.getWeaponRepository().removeGemFromSocket(weaponName, socketIndex);
+        return null;
     }
 }

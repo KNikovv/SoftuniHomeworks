@@ -11,9 +11,9 @@ public interface WeaponRepository {
 
     void removeGemFromSocket(String weaponName, int socketIndex);
 
-    void compareWeapons(String firstWeaponName, String secondWeaponName);
+    String compareWeapons(String firstWeaponName, String secondWeaponName);
 
-    void printAnnotation(String annotationType);
+    String getAnnotationAsString(String annotationType);
 
-    void print(String weaponName);
+    String getWeaponToPrint(String weaponName);
 }

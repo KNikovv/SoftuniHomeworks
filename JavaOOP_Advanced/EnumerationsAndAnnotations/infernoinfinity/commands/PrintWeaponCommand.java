@@ -9,8 +9,9 @@ public class PrintWeaponCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... params) {
+    public String execute(String... params) {
         String weaponName = params[1];
-        this.getWeaponRepository().print(weaponName);
+
+        return this.getWeaponRepository().getWeaponToPrint(weaponName);
     }
 }

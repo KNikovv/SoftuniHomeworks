@@ -3,7 +3,9 @@ package infernoinfinity.core;
 import infernoinfinity.interfaces.CommandInterpreter;
 import infernoinfinity.interfaces.Engine;
 import infernoinfinity.interfaces.Reader;
+import infernoinfinity.interfaces.Writer;
 import infernoinfinity.io.ConsoleReader;
+import infernoinfinity.io.ConsoleWriter;
 
 import java.io.IOException;
 
@@ -11,9 +13,11 @@ public class EngineImpl implements Engine {
 
     private CommandInterpreter commandInterpreter;
     private Reader reader;
+    private Writer writer;
 
     public EngineImpl(CommandInterpreter commandInterpreter) {
         this.reader = new ConsoleReader();
+        this.writer = new ConsoleWriter();
         this.commandInterpreter = commandInterpreter;
         this.commandInterpreter.seedCommands();
     }
@@ -28,8 +32,10 @@ public class EngineImpl implements Engine {
             String[] params = input.split(";");
             String command = params[0];
 
-            this.commandInterpreter.dispatch(command, params);
+            String output = this.commandInterpreter.dispatch(command, params);
+            if (output != null) {
+                this.writer.writeLine(output);
+            }
         }
     }
-
 }

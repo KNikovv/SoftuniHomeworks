@@ -32,8 +32,8 @@ public class CommandInterpreterImpl implements CommandInterpreter {
     }
 
     @Override
-    public void dispatch(String command, String[] params) {
-        this.commands.get(command).execute(params);
+    public String dispatch(String command, String[] params) {
+        return this.commands.get(command).execute(params);
     }
 
 }
