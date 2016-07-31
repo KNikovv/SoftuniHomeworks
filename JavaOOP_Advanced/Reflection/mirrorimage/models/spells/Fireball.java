@@ -1,5 +1,7 @@
 package mirrorimage.models.spells;
 
+import mirrorimage.core.WizardDataImpl;
+import mirrorimage.core.interfaces.WizardData;
 import mirrorimage.enums.SpellType;
 import mirrorimage.models.interfaces.Wizard;
 
@@ -15,9 +17,11 @@ public class Fireball extends AbstractSpell {
         int wizardId = this.getWizard().getId();
         int damageDone = this.getWizard().getMagicalPower();
 
-        System.out.println((String.format("%s %d casts Fireball for %d damage",
+       String spellResult = String.format("%s %d casts Fireball for %d damage",
                 wizardName,
                 wizardId,
-                damageDone)));
+                damageDone);
+        WizardData wizardData = WizardDataImpl.getInstance();
+        wizardData.addSpellResult(spellResult);
     }
 }

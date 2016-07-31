@@ -19,19 +19,25 @@ public class Reflection extends AbstractSpell {
         Wizard wizard = this.getWizard();
         int magicalPower = this.getWizard().getMagicalPower();
 
+        if (wizard.getListenersCount() < REFLECTION_COUNT) {
+            createReflections(wizard, magicalPower);
+        }
+        String wizardName = this.getWizard().getName();
+        int wizardId = this.getWizard().getId();
+
+        String spellResult = String.format("%s %d casts Reflection", wizardName,wizardId);
+
+        WizardData wizardData = WizardDataImpl.getInstance();
+        wizardData.addSpellResult(spellResult);
+    }
+
+    private void createReflections(Wizard wizard, int magicalPower) {
         for (int i = 0; i < 2; i++) {
             Wizard newWizard = WizardFactory.createWizard(wizard.getName(), magicalPower / REFLECTION_COUNT);
 
             addMageToData(newWizard);
             wizard.addListener(newWizard);
         }
-
-        String wizardName = this.getWizard().getName();
-        int wizardId = this.getWizard().getId();
-
-        System.out.println((String.format("%s %d casts Reflection",
-                wizardName,
-                wizardId)));
     }
 
     private void addMageToData(Wizard wizard) {

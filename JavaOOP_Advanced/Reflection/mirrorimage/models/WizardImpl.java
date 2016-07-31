@@ -5,8 +5,8 @@ import mirrorimage.models.interfaces.Listener;
 import mirrorimage.models.interfaces.Spell;
 import mirrorimage.models.interfaces.Wizard;
 
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class WizardImpl implements Wizard {
 
@@ -19,7 +19,7 @@ public class WizardImpl implements Wizard {
         this.setId(id);
         this.setName(name);
         this.setMagicalPower(magicalPower);
-        this.listeners = new CopyOnWriteArrayList<>();
+        this.listeners = new LinkedList<>();
     }
 
     public String getName() {
@@ -42,15 +42,15 @@ public class WizardImpl implements Wizard {
         return magicalPower;
     }
 
-    @Override
-    public void castSpell(Spell spell) {
-        List<Listener> copyListeners = new CopyOnWriteArrayList<>(this.listeners);
-        spell.cast();
-        this.notifyListeners(spell, copyListeners);
-    }
-
     private void setMagicalPower(int magicalPower) {
         this.magicalPower = magicalPower;
+    }
+
+    @Override
+    public void castSpell(Spell spell) {
+        List<Listener> copyListeners = new LinkedList<>(this.listeners);
+        spell.cast();
+        this.notifyListeners(spell, copyListeners);
     }
 
     @Override
@@ -75,4 +75,10 @@ public class WizardImpl implements Wizard {
             listener.update(spell);
         }
     }
+
+    @Override
+    public int getListenersCount() {
+        return this.listeners.size();
+    }
+
 }

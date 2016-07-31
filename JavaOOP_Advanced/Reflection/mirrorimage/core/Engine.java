@@ -5,6 +5,7 @@ import mirrorimage.core.interfaces.Runnable;
 import mirrorimage.core.interfaces.WizardData;
 import mirrorimage.factories.WizardFactory;
 import mirrorimage.io.interfaces.Reader;
+import mirrorimage.io.interfaces.Writer;
 import mirrorimage.models.interfaces.Wizard;
 
 import java.io.IOException;
@@ -13,9 +14,11 @@ public class Engine implements Runnable {
 
     private Reader reader;
     private Executable executable;
+    private Writer writer;
 
-    public Engine(Reader reader, Executable executable) {
+    public Engine(Reader reader, Writer writer, Executable executable) {
         this.reader = reader;
+        this.writer = writer;
         this.executable = executable;
     }
 
@@ -31,6 +34,12 @@ public class Engine implements Runnable {
             }
             this.executable.execute(input);
         }
+        this.printResults();
+    }
+
+    private void printResults() {
+        String allSpellsCasted = WizardDataImpl.getInstance().getSpellResults();
+        this.writer.writeLine(allSpellsCasted);
     }
 
     private void createFirstWizard(String... data) {

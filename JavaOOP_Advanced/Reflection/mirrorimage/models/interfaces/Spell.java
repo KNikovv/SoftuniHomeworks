@@ -4,7 +4,7 @@ import mirrorimage.enums.SpellType;
 
 public interface Spell {
 
-    void cast();
+    void   cast();
 
     SpellType getSpellType();
 

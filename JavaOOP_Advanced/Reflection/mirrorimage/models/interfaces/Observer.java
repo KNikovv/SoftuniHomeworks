@@ -9,4 +9,6 @@ public interface Observer {
     void removeListener(Listener listener);
 
     void notifyListeners(Spell spell, List<Listener> listeners);
+
+    int getListenersCount();
 }
