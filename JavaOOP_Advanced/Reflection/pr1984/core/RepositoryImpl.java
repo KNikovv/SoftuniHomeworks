@@ -12,7 +12,7 @@ public class RepositoryImpl implements Repository {
     private List<Observer> observers;
 
     public RepositoryImpl() {
-        this.entitiesById = new HashMap<>();
+        this.entitiesById = new LinkedHashMap<>();
         this.observers = new LinkedList<>();
     }
 

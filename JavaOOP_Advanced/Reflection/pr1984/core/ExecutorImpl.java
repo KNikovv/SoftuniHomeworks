@@ -41,9 +41,9 @@ public class ExecutorImpl implements Executor {
         Method[] allMethods = combineMethods(entityParentMethods, entityMethods);
 
         for (Method method : allMethods) {
-            method.setAccessible(true);
             Monitored annotation = method.getAnnotation(Monitored.class);
             if (annotation != null && annotation.value().equals(subjectToInspect)) {
+                method.setAccessible(true);
                 if (subjectToInspect.equals("name")) {
                     method.invoke(toInspect, valueToChange);
                     break;

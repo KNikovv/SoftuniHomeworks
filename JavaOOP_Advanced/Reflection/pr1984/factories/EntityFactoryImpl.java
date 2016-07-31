@@ -26,7 +26,7 @@ public class EntityFactoryImpl implements EntityFactory {
         Class<Entity> entityClass = (Class<Entity>) Class.forName(ENTITY_PATH + args[0]);
         Constructor ctorObservable = entityClass.getDeclaredConstructor();
         entity = (Entity) ctorObservable.newInstance();
-        this.injectDependancies(entity, entityClass);
+        this.injectDependencies(entity, entityClass);
         return entity;
     }
 
@@ -57,7 +57,7 @@ public class EntityFactoryImpl implements EntityFactory {
         }
     }
 
-    private void injectDependancies(Entity observable, Class<Entity> observableClass) throws
+    private void injectDependencies(Entity observable, Class<Entity> observableClass) throws
             IllegalAccessException {
 
         Field[] entityFields = observableClass.getDeclaredFields();
