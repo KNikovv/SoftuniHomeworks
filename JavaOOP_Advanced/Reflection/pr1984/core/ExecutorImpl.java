@@ -44,7 +44,7 @@ public class ExecutorImpl implements Executor {
             Monitored annotation = method.getAnnotation(Monitored.class);
             if (annotation != null && annotation.value().equals(subjectToInspect)) {
                 method.setAccessible(true);
-                if (subjectToInspect.equals("name")) {
+                if (method.getParameterTypes()[0].equals(String.class)) {
                     method.invoke(toInspect, valueToChange);
                     break;
                 }
