@@ -4,10 +4,7 @@ import pr1984.core.interfaces.Repository;
 import pr1984.models.interfaces.Entity;
 import pr1984.models.interfaces.Observer;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RepositoryImpl implements Repository {
 

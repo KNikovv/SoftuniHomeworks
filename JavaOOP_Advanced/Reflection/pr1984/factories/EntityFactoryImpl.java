@@ -3,7 +3,6 @@ package pr1984.factories;
 import pr1984.annotations.Inject;
 import pr1984.factories.interfaces.EntityFactory;
 import pr1984.models.interfaces.Entity;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -43,7 +42,7 @@ public class EntityFactoryImpl implements EntityFactory {
                 this.revenue = Integer.valueOf(args[4]);
                 break;
             default:
-                throw new NotImplementedException();
+                throw new IllegalArgumentException();
         }
     }
 

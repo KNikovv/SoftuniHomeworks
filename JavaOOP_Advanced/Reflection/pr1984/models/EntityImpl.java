@@ -1,6 +1,6 @@
 package pr1984.models;
 
-import pr0304Barracks.core.annotations.Inject;
+import pr1984.annotations.Inject;
 import pr1984.annotations.Monitored;
 import pr1984.models.interfaces.ChangeEvent;
 import pr1984.models.interfaces.Entity;

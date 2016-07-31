@@ -28,31 +28,27 @@ public class ExecutorImpl implements Executor {
     }
 
     @Override
-    public void executeChange(String... args) {
+    public void executeChange(String... args) throws ReflectiveOperationException {
         String idToInspect = args[0];
         String subjectToInspect = args[1];
         String valueToChange = args[2];
 
         Entity toInspect = this.repository.getEntityById(idToInspect);
+
         Method[] entityMethods = toInspect.getClass().getDeclaredMethods();
         Method[] entityParentMethods = toInspect.getClass().getSuperclass().getDeclaredMethods();
-        Method[] allMethods = combineMethods(entityMethods, entityParentMethods);
+
+        Method[] allMethods = combineMethods(entityParentMethods, entityMethods);
+
         for (Method method : allMethods) {
-            if (!method.isAnnotationPresent(Monitored.class)) {
-                continue;
-            }
             method.setAccessible(true);
             Monitored annotation = method.getAnnotation(Monitored.class);
-            if (annotation.value().equals(subjectToInspect)) {
-                try {
-                    if (subjectToInspect.equals("name")) {
-                        method.invoke(toInspect, valueToChange);
-                        break;
-                    }
-                    method.invoke(toInspect, Integer.valueOf(valueToChange));
-                } catch (ReflectiveOperationException ex) {
-                    ex.printStackTrace();
+            if (annotation != null && annotation.value().equals(subjectToInspect)) {
+                if (subjectToInspect.equals("name")) {
+                    method.invoke(toInspect, valueToChange);
+                    break;
                 }
+                method.invoke(toInspect, Integer.valueOf(valueToChange));
             }
         }
     }
@@ -74,11 +70,11 @@ public class ExecutorImpl implements Executor {
         this.repository.subscribeEntities(observer);
     }
 
-    private Method[] combineMethods(Method[] fromClass, Method[] fromParent) {
-        int totalLength = fromClass.length + fromParent.length;
+    private Method[] combineMethods(Method[] fromParent, Method[] fromClass) {
+        int totalLength = fromParent.length + fromClass.length;
         Method[] result = new Method[totalLength];
-        System.arraycopy(fromClass, 0, result, 0, fromClass.length);
-        System.arraycopy(fromParent, 0, result, fromClass.length, fromParent.length);
+        System.arraycopy(fromParent, 0, result, 0, fromParent.length);
+        System.arraycopy(fromClass, 0, result, fromParent.length, fromClass.length);
         return result;
     }
 }
