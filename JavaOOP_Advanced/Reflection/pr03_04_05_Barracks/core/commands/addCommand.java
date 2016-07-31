@@ -5,14 +5,14 @@ import pr0304Barracks.contracts.Unit;
 import pr0304Barracks.contracts.UnitFactory;
 import pr0304Barracks.core.annotations.Inject;
 
-public class addCommand extends Command {
+public class AddCommand extends Command {
 
     @Inject
     private UnitFactory unitFactory;
     @Inject
     private Repository repository;
 
-    protected addCommand(String[] data) {
+    protected AddCommand(String[] data) {
         super(data);
     }
 

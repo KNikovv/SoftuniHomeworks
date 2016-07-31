@@ -1,8 +1,8 @@
 package pr0304Barracks.core.commands;
 
-public class fightCommand extends Command {
+public class FightCommand extends Command {
 
-    protected fightCommand(String[] data) {
+    protected FightCommand(String[] data) {
         super(data);
     }
 

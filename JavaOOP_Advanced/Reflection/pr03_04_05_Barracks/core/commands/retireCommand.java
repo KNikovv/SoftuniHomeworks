@@ -3,11 +3,11 @@ package pr0304Barracks.core.commands;
 import pr0304Barracks.contracts.Repository;
 import pr0304Barracks.core.annotations.Inject;
 
-public class retireCommand extends Command {
+public class RetireCommand extends Command {
 
     @Inject
     private Repository repository;
-    protected retireCommand(String[] data) {
+    protected RetireCommand(String[] data) {
         super(data);
     }
 

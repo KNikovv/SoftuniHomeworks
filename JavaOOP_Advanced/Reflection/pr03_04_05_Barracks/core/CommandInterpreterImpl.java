@@ -23,7 +23,8 @@ public class CommandInterpreterImpl implements CommandInterpreter {
     public Executable interpretCommand(String[] data, String commandName) {
         Executable executable;
         try {
-            String className = COMMANDS_PACKAGE + commandName + "Command";
+            char firstLetter = Character.toUpperCase(commandName.charAt(0));
+            String className = COMMANDS_PACKAGE + firstLetter + commandName.substring(1) + "Command";
             Class<Executable> exeClass = (Class<Executable>) Class.forName(className);
             Constructor<Executable> ctorCommand = exeClass
                     .getDeclaredConstructor(String[].class);

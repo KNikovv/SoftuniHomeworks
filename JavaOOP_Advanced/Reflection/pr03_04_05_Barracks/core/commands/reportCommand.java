@@ -3,12 +3,12 @@ package pr0304Barracks.core.commands;
 import pr0304Barracks.contracts.Repository;
 import pr0304Barracks.core.annotations.Inject;
 
-public class reportCommand extends Command {
+public class ReportCommand extends Command {
 
     @Inject
     private Repository repository;
 
-    protected reportCommand(String[] data) {
+    protected ReportCommand(String[] data) {
         super(data);
     }
 
