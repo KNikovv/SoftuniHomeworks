@@ -9,7 +9,7 @@ import pr1984.models.interfaces.Observer;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EntityImpl implements Entity {
+public abstract class EntityImpl implements Entity {
 
     @Inject
     private String id;
