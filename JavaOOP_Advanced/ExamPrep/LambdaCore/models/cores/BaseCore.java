@@ -66,7 +66,7 @@ public class BaseCore implements Core {
 
     @Override
     public Fragment attachFragment(Fragment fragment) {
-        if (this.checkIsFragmentValidType(fragment)) {
+        if (this.checkIsFragmenDifferentType(fragment)) {
             throw new IllegalArgumentException();
         }
         Fragment attached = this.fragments.push(fragment);
@@ -98,7 +98,7 @@ public class BaseCore implements Core {
                 this.getStatus());
     }
 
-    private boolean checkIsFragmentValidType(Fragment fragment) {
+    private boolean checkIsFragmenDifferentType(Fragment fragment) {
         return !fragment.getFragmentType().equals(FragmentType.Nuclear) &&
                 !fragment.getFragmentType().equals(FragmentType.Cooling);
     }
