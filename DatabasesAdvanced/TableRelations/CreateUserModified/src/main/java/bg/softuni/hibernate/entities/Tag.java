@@ -12,7 +12,7 @@ public class Tag {
     private Set<Album> albums;
 
     public Tag() {
-        
+
     }
 
     @Id
@@ -30,13 +30,10 @@ public class Tag {
     }
 
     public void setValue(String value) {
-        if (value.contains("\\s")) {
-            throw new IllegalArgumentException("invalid tag");
-        }
-        this.value = value;
+        this.value = "#" + value.replaceAll("\\s+", "");
     }
 
-    @ManyToMany(mappedBy = "tags",targetEntity = Album.class)
+    @ManyToMany(mappedBy = "tags", targetEntity = Album.class)
     public Set<Album> getAlbums() {
         return albums;
     }
